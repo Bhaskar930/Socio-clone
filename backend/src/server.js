@@ -18,16 +18,11 @@ connectDB();
 app.use(express.json());
 
 // ✅ CORS setup (Allow frontend)
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 // ✅ Routes
-app.use("/user", userRouter); // public routes
-app.use("/post", authMiddleware, postRouter); // protected routes
+app.use("/api/user", userRouter); // public routes
+app.use("/api/post", authMiddleware, postRouter); // protected routes
 
 // ✅ Serve frontend (production build)
 const __dirname = path.resolve();
